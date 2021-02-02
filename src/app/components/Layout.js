@@ -1,6 +1,6 @@
 import SearchResults from './SearchResults';
 import {React, useState, useRef} from 'react';
-import SearchBar from './SearchBar/SearchBar';
+import { ConnectedSearchBar } from './SearchBar/SearchBar';
 import youtube from '../../apis/youtube';
 
 
@@ -24,8 +24,8 @@ const Layout = () => {
 
     return (
         <div className="">
-            <div>{searchQuery}</div>
-            <SearchBar setSearchQuery={setSearchQuery} fetchResult={fetchResult}/>
+            {/* <ConnectedSearchBar setSearchQuery={setSearchQuery} fetchResult={fetchResult}/> */}
+            <ConnectedSearchBar />
             <div>
                 {items.length === 0 ? null :
                 <SearchResults items={items}/>

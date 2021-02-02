@@ -1,13 +1,28 @@
 import { React, useState, useRef } from 'react';
+import { connect } from 'react-redux';
+import { setSearchQuery } from '../../actions'
 import './SearchBar.css';
 
-const SearchBar = ({setSearchQuery, fetchResult}) => {
+const SearchBar = ({setSearchQuery}) => {
 
     return (
-        <form className="search-form" onSubmit={fetchResult}>
-            <input type="text" name="query" onChange={e => setSearchQuery(e.target.value)}/>
+        <form className="search-form" >
+            <input type="text" name="query" onChange={setSearchQuery}/>
             <button type="submit">Search</button>
         </form>
     )
 }
-export default SearchBar;
+
+const mapStateToProps = (state, ownProps) => {
+    return (state);
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        setSearchQuery(e) {
+            dispatch(setSearchQuery(e.target.value));
+        }
+    }
+}
+
+export const ConnectedSearchBar = connect(mapStateToProps, mapDispatchToProps)(SearchBar);
