@@ -1,28 +1,39 @@
 import { React, useState, useRef } from 'react';
-import { connect } from 'react-redux';
 import { setSearchQuery } from '../../actions'
+import { connect, useSelector, useDispatch } from 'react-redux';
 import './SearchBar.css';
 
-const SearchBar = ({setSearchQuery}) => {
+const SearchBar = ({query, setSearchQuery}) => {
+    console.log(query);
+
 
     return (
-        <form className="search-form" >
-            <input type="text" name="query" onChange={setSearchQuery}/>
-            <button type="submit">Search</button>
-        </form>
+        <>
+            {query==='' 
+            ?
+            <form className="search-form-start" >
+                <input type="text" name="query" onChange={setSearchQuery}/>
+                <button type="submit">Search</button>
+            </form>
+            :
+            <form className="search-form-searching" >
+                <input type="text" name="query" onChange={setSearchQuery}/>
+                <button type="submit">Search</button>
+            </form>
+            }
+        </>
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return (state);
+const mapStateToProps = state => {
+    return {query: state.query};
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         setSearchQuery(e) {
             dispatch(setSearchQuery(e.target.value));
         }
     }
 }
-
 export const ConnectedSearchBar = connect(mapStateToProps, mapDispatchToProps)(SearchBar);

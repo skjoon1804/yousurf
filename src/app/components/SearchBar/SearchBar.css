@@ -1,3 +1,16 @@
 form {
   text-align: center;
 }
+
+.search-form-start {
+  margin: auto;
+}
+.search-form-start input {
+  display: block;
+}
+.search-form-start button {
+  display: block;
+}
+
+.search-form-searching {
+}

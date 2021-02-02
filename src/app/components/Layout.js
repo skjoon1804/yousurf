@@ -2,6 +2,7 @@ import SearchResults from './SearchResults';
 import {React, useState, useRef} from 'react';
 import { ConnectedSearchBar } from './SearchBar/SearchBar';
 import youtube from '../../apis/youtube';
+import { connect } from 'react-redux';
 
 
 const Layout = () => {
@@ -35,4 +36,4 @@ const Layout = () => {
         </div>
     );
 }
-export default Layout;
+export const ConnectedLayout =  connect()(Layout);

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import queryReducer from './query';
+import { queryReducer } from './query';
 import loginReducer from './login';
 
 const reducer = combineReducers({
