@@ -1,4 +1,4 @@
-import { ConnectedSearchResults } from './SearchResults';
+import { ConnectedSearchResults } from './SearchResults/SearchResults';
 import {React, useState, useRef} from 'react';
 import { ConnectedSearchBar } from './SearchBar/SearchBar';
 import youtube from '../../apis/youtube';
@@ -13,7 +13,7 @@ const Layout = ({results}) => {
             <ConnectedSearchBar />
             <div>
                 {results.length === 0 ? null :
-                <ConnectedSearchResults />
+                <ConnectedSearchResults  />
                 }
             </div>
             

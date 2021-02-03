@@ -20,22 +20,53 @@ const SearchBar = ({query, setSearchQuery, setResults}) => {
         }
     }
 
+    const startFormStyle = {
+
+    }
+    const startInputStyle = {
+        margin: "10px",
+    };
+    const startButtonStyle = {
+        margin: "10px",
+
+    }
+
+
+    const changeFormStyle = {
+
+    }
+    const changeInputStyle = {
+
+    }
+    const changeButtonStyle = {
+
+    }
 
     return (
-        <>
-            {query==='' 
-            ?
-            <form className="search-form-start" onSubmit={fetchResult}>
-                <input type="text" name="query" onChange={setSearchQuery}/>
-                <button type="submit">Search</button>
+        <div>
+            <form onSubmit={fetchResult}>
+                <input type="text" name="query" onChange={setSearchQuery}
+                    style={query==='' ? startInputStyle : changeInputStyle}/>
+                <button type="submit" 
+                    style={query==='' ? startButtonStyle : changeButtonStyle}>Search</button>
             </form>
-            :
-            <form className="search-form-searching" onSubmit={fetchResult}>
-                <input type="text" name="query" onChange={setSearchQuery}/>
-                <button type="submit">Search</button>
-            </form>
-            }
-        </>
+        </div>
+        // <>
+        //     {query==='' 
+        //     ?
+        //     <div>
+        //         <form className="search-form-start" onSubmit={fetchResult}>
+        //             <input type="text" name="query" onChange={setSearchQuery}/>
+        //             <button type="submit">Search</button>
+        //         </form>
+        //     </div>
+        //     :
+        //     <form className="search-form-searching" onSubmit={fetchResult}>
+        //         <input type="text" name="query" onChange={setSearchQuery}/>
+        //         <button type="submit">Search</button>
+        //     </form>
+        //     }
+        // </>
     )
 }
 

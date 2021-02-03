@@ -1,15 +1,15 @@
 import { React } from 'react';
 import { connect } from 'react-redux';
+import { ConnectedSearchResult } from '../SearchResult/SearchResult';
 
 const SearchResults = ({results}) => {
 
+
     return (
+
         <>
             {results.map((item, index) => 
-                <div key={index}>
-                    <p>{item.snippet.thumbnails.high.url}</p>
-                    <img src={item.snippet.thumbnails.high.url} />
-                </div>
+                <ConnectedSearchResult index={index} item={item}/>
             )}
         </>
 

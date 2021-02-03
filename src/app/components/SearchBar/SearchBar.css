@@ -3,13 +3,21 @@ form {
 }
 
 .search-form-start {
-  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
 }
 .search-form-start input {
   display: block;
+  margin: 10px auto;
 }
 .search-form-start button {
-  display: block;
+  margin: 10px;
+  background: white;
+  cursor: pointer;
+  border: 1px gray solid;
+  padding: 5px 10px;
 }
 
 .search-form-searching {
