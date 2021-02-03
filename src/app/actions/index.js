@@ -4,3 +4,10 @@ export const setSearchQuery = (query) => {
         query
     };
 };
+
+export const setResults = (results) => {
+    return {
+        type: 'SET_RESULTS',
+        results
+    };
+};

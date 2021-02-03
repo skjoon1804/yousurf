@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { queryReducer } from './query';
-import loginReducer from './login';
+import { query } from './query';
+import { login } from './login';
+import { results } from './results';
 
 const reducer = combineReducers({
-    query: queryReducer,
-    login: loginReducer
+    query,
+    login,
+    results
 })
 export default reducer;

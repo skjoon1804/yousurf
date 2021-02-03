@@ -1,13 +1,11 @@
 import { React } from 'react';
 import { connect } from 'react-redux';
 
-const SearchResults = ({items}) => {
-
-    console.log(items);
+const SearchResults = ({results}) => {
 
     return (
         <>
-            {items.map((item, index) => 
+            {results.map((item, index) => 
                 <div key={index}>
                     <p>{item.snippet.thumbnails.high.url}</p>
                     <img src={item.snippet.thumbnails.high.url} />
@@ -18,10 +16,10 @@ const SearchResults = ({items}) => {
     )
 }
 
-// const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
+    return {
+        results: state.results
+    };
+}
 
-//     return {
-//         state
-//     };
-// }
-export default SearchResults;
+export const ConnectedSearchResults = connect(mapStateToProps)(SearchResults);
