@@ -11,3 +11,17 @@ export const setResults = (results) => {
         results
     };
 };
+
+export const setNextPageToken = (nextPageToken) => {
+    return {
+        type: 'SET_NEXT_PAGE_TOKEN',
+        nextPageToken
+    }
+}
+
+export const addResults = (results) => {
+    return {
+        type: 'ADD_RESULTS',
+        results
+    }
+}

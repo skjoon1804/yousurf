@@ -3,22 +3,47 @@ import { setSearchQuery, setResults, setNextPageToken, addResults } from '../../
 import { connect } from 'react-redux';
 import './SearchBar.css';
 
-import youtube from '../../../apis/youtube';
+import { initialRequest, nextRequest } from '../../../apis/youtube';
 
-const SearchBar = ({query, results, setSearchQuery, setResults}) => {
+
+const SearchBar = ({
+    query, results, nextPageToken, 
+    setSearchQuery, setResults, setNextPageToken
+}) => {
+
+
+    // document.addEventListener('scroll', function (e) {
+    //     if (document.body.scrollHeight === document.body.scrollTop + window.innerHeight) {
+    //         alert("Bottom!");
+    //         fetchNextResult();
+    //     }
+    // })
+  
+    async function fetchNextResult(e) {
+        e.preventDefault();
+        
+        let response = await nextRequest(nextPageToken).get('/search', {
+            params: {
+                q: query
+            }
+        });
+        console.log(response);
+        console.log('before'+results);
+        addResults(response.data.items);
+        console.log('after'+results);
+    }
 
     async function fetchResult(e) {
         e.preventDefault();
-
-
         if (query !== "") {
-            let response = await youtube.get('/search', {
+            let response = await initialRequest().get('/search', {
                 params: {
                     q: query
                 }
             });
-            console.log(query);
             setResults(response.data.items);
+            setNextPageToken(response.data.nextPageToken);
+            console.log(response.data.nextPageToken);
         }
     }
 
@@ -42,39 +67,19 @@ const SearchBar = ({query, results, setSearchQuery, setResults}) => {
                     <input type="text" name="query" placeholder="Enter Keyword" 
                     className="d-block m-auto input-group-lg w-50" onChange={setSearchQuery} />
                     <button type="submit" className="btn btn-outline-dark m-2 px-5">Search</button>
+                    <button onClick={fetchNextResult}>Test</button>
                 </form>
             </div>
         }
         </>
-
-
-
-
-            // {/* <div className="spinner-grow"></div> */}
-    
-        // <>
-        //     {query==='' 
-        //     ?
-        //     <div>
-        //         <form className="search-form-start" onSubmit={fetchResult}>
-        //             <input type="text" name="query" onChange={setSearchQuery}/>
-        //             <button type="submit">Search</button>
-        //         </form>
-        //     </div>
-        //     :
-        //     <form className="search-form-searching" onSubmit={fetchResult}>
-        //         <input type="text" name="query" onChange={setSearchQuery}/>
-        //         <button type="submit">Search</button>
-        //     </form>
-        //     }
-        // </>
     )
 }
 
 const mapStateToProps = state => {
     return {
         query: state.query,
-        results: state.results
+        results: state.results,
+        nextPageToken: state.nextPageToken
     };
 }
 
@@ -85,6 +90,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setResults(items) {
             dispatch(setResults(items));
+        },
+        setNextPageToken(token) {
+            dispatch(setNextPageToken(token));
         }
     }
 }

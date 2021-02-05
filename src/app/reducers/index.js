@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 import { query } from './query';
 import { login } from './login';
-import { results } from './results';
+import {results, nextPageToken } from './results';
 
 const reducer = combineReducers({
     query,
     login,
-    results
+    results,
+    nextPageToken
 })
 export default reducer;

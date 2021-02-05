@@ -8,12 +8,12 @@ const SearchResult = ({url, title, channelTitle, publishedAt, description, video
     return (
         <div className="card flex-row m-4" >
             <div>
-                <a href={`http://youtube.com/watch?v=`+videoId} target='_blank'>
-                    <img src={url} className="m-2"/>
+                <a href={`http://youtube.com/watch?v=`+videoId} target='_blank' rel="noreferrer">
+                    <img src={url} className="m-2" alt="video"/>
                 </a>
             </div>
             <div className="card-block p-4">
-                <h4><a href={`http://youtube.com/watch?v=`+videoId} target='_blank' 
+                <h4><a href={`http://youtube.com/watch?v=`+videoId} target='_blank' rel="noreferrer"
                     style={{textDecoration: 'none', color: 'black'}}>{title}</a></h4>
                 <h6>{channelTitle}</h6>
                 <span className="text-muted">Published on {publishedAt}</span>
