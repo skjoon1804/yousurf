@@ -7,11 +7,11 @@ const SearchResults = ({results}) => {
 
     return (
 
-        <>
+        <div className="px-5">
             {results.map((item, index) => 
                 <ConnectedSearchResult index={index} item={item}/>
             )}
-        </>
+        </div>
 
     )
 }

@@ -9,6 +9,8 @@ const SearchBar = ({query, setSearchQuery, setResults}) => {
 
     async function fetchResult(e) {
         e.preventDefault();
+
+
         if (query !== "") {
             let response = await youtube.get('/search', {
                 params: {
@@ -24,11 +26,10 @@ const SearchBar = ({query, setSearchQuery, setResults}) => {
 
     }
     const startInputStyle = {
-        margin: "10px",
+        
     };
     const startButtonStyle = {
-        margin: "10px",
-
+        
     }
 
 
@@ -43,14 +44,19 @@ const SearchBar = ({query, setSearchQuery, setResults}) => {
     }
 
     return (
-        <div>
-            <form onSubmit={fetchResult}>
-                <input type="text" name="query" onChange={setSearchQuery}
-                    style={query==='' ? startInputStyle : changeInputStyle}/>
-                <button type="submit" 
-                    style={query==='' ? startButtonStyle : changeButtonStyle}>Search</button>
+        <div className="text-center container h-100">
+            <h1>YouSurf</h1>
+            <form onSubmit={fetchResult} className="m-4">
+                <input type="text" name="query" placeholder="Enter Keyword" 
+                className="d-block m-auto input-group-lg w-50" onChange={setSearchQuery} />
+                <button type="submit" className="btn btn-outline-dark m-2 px-5">Search</button>
             </form>
         </div>
+
+
+
+            // {/* <div className="spinner-grow"></div> */}
+    
         // <>
         //     {query==='' 
         //     ?
