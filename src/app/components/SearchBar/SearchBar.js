@@ -5,7 +5,7 @@ import './SearchBar.css';
 
 import youtube from '../../../apis/youtube';
 
-const SearchBar = ({query, setSearchQuery, setResults}) => {
+const SearchBar = ({query, results, setSearchQuery, setResults}) => {
 
     async function fetchResult(e) {
         e.preventDefault();
@@ -22,36 +22,31 @@ const SearchBar = ({query, setSearchQuery, setResults}) => {
         }
     }
 
-    const startFormStyle = {
-
-    }
-    const startInputStyle = {
-        
-    };
-    const startButtonStyle = {
-        
-    }
-
-
-    const changeFormStyle = {
-
-    }
-    const changeInputStyle = {
-
-    }
-    const changeButtonStyle = {
-
-    }
-
     return (
-        <div className="text-center container h-100">
-            <h1>YouSurf</h1>
-            <form onSubmit={fetchResult} className="m-4">
-                <input type="text" name="query" placeholder="Enter Keyword" 
-                className="d-block m-auto input-group-lg w-50" onChange={setSearchQuery} />
-                <button type="submit" className="btn btn-outline-dark m-2 px-5">Search</button>
-            </form>
-        </div>
+        <>
+        {results.length === 0 
+        ?
+            <div className="text-center align-items-center justify-content-center d-flex flex-column h-100">
+                <h1>YouSurf</h1>
+                <form onSubmit={fetchResult} className="m-4 w-100">
+                    <input type="text" name="query" placeholder="Enter Keyword" 
+                    className="d-block m-auto input-group-lg w-50" onChange={setSearchQuery} />
+                    <button type="submit" className="btn btn-outline-dark m-2 px-5">Search</button>
+                    <button className="btn btn-outline-dark m-2 px-4">I'm Feeling Lucky</button>
+                </form>
+            </div>
+        :
+            <div className="text-center container">
+                <h2>YouSurf</h2>
+                <form onSubmit={fetchResult} className="m-4">
+                    <input type="text" name="query" placeholder="Enter Keyword" 
+                    className="d-block m-auto input-group-lg w-50" onChange={setSearchQuery} />
+                    <button type="submit" className="btn btn-outline-dark m-2 px-5">Search</button>
+                </form>
+            </div>
+        }
+        </>
+
 
 
 
@@ -77,7 +72,10 @@ const SearchBar = ({query, setSearchQuery, setResults}) => {
 }
 
 const mapStateToProps = state => {
-    return {query: state.query};
+    return {
+        query: state.query,
+        results: state.results
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -7,12 +7,12 @@ import { connect } from 'react-redux';
 const Layout = ({results}) => {
 
     return (
-        <div >
+        <>
             <ConnectedSearchBar />
             {results.length === 0 ? null :
             <ConnectedSearchResults  />
             }
-        </div>
+        </>
     );
 }
 
