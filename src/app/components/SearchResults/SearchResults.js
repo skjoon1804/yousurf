@@ -4,15 +4,12 @@ import { ConnectedSearchResult } from '../SearchResult/SearchResult';
 
 const SearchResults = ({results}) => {
 
-
     return (
-
-        <div className="px-5">
+        <div className="px-5 py-3">
             {results.map((item, index) => 
-                <ConnectedSearchResult index={index} item={item}/>
+                <ConnectedSearchResult key={index} item={item}/>
             )}
         </div>
-
     )
 }
 

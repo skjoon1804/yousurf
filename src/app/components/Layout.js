@@ -1,5 +1,5 @@
 import { ConnectedSearchResults } from './SearchResults/SearchResults';
-import {React, useState, useRef} from 'react';
+import {React} from 'react';
 import { ConnectedSearchBar } from './SearchBar/SearchBar';
 import { connect } from 'react-redux';
 

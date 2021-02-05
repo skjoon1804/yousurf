@@ -1,6 +1,6 @@
-import { React, useState, useRef } from 'react';
-import { setSearchQuery, setResults } from '../../actions'
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { React } from 'react';
+import { setSearchQuery, setResults, setNextPageToken, addResults } from '../../actions'
+import { connect } from 'react-redux';
 import './SearchBar.css';
 
 import youtube from '../../../apis/youtube';
