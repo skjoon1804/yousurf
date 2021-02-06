@@ -5,17 +5,19 @@ import './SearchBar.css';
 
 import { initialRequest, nextRequest } from '../../../apis/youtube';
 
+let testVar = '';
 
 const SearchBar = ({
     query, results, nextPageToken, 
-    setSearchQuery, setResults, setNextPageToken
+    setSearchQuery, setResults, setNextPageToken, addResults
 }) => {
 
 
     // document.addEventListener('scroll', function (e) {
     //     if (document.body.scrollHeight === document.body.scrollTop + window.innerHeight) {
     //         alert("Bottom!");
-    //         fetchNextResult();
+    //         // fetchNextResult();
+    //         addResults(testVar);
     //     }
     // })
   
@@ -27,10 +29,8 @@ const SearchBar = ({
                 q: query
             }
         });
-        console.log(response);
-        console.log('before'+results);
+        setNextPageToken(response.data.nextPageToken);
         addResults(response.data.items);
-        console.log('after'+results);
     }
 
     async function fetchResult(e) {
@@ -41,9 +41,9 @@ const SearchBar = ({
                     q: query
                 }
             });
+            testVar = response.data.items;
             setResults(response.data.items);
             setNextPageToken(response.data.nextPageToken);
-            console.log(response.data.nextPageToken);
         }
     }
 
@@ -93,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setNextPageToken(token) {
             dispatch(setNextPageToken(token));
+        },
+        addResults(results) {
+            dispatch(addResults(results));
         }
     }
 }

@@ -3,8 +3,7 @@ export const results = (state = [], action) => {
         case 'SET_RESULTS':
             return action.results;
         case 'ADD_RESULTS':
-            console.log("ADD_RESULTS");
-            return [...state, action.results];
+            return [...state].concat(action.results);
         default:
             return state;
     }

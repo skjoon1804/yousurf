@@ -16,7 +16,6 @@ export function initialRequest() {
 }
 
 export function nextRequest(token) {
-    console.log("inside next request");
     const r =         
         axios.create({
             baseURL: 'https://www.googleapis.com/youtube/v3/',
@@ -24,7 +23,8 @@ export function nextRequest(token) {
                 part: 'snippet',
                 maxResults: 5,
                 key: YOUTUBE_TOKEN,
-                type: 'video'
+                type: 'video',
+                pageToken: token
         }
     });
     return (
