@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import './SearchResult.css';
 
 const SearchResult = ({url, title, channelTitle, publishedAt, description, videoId }) => {
-
-
+    
     return (
-        <div className="card flex-row m-4" >
+        <div className="card flex-row m-4">
             <div>
                 <a href={`http://youtube.com/watch?v=`+videoId} target='_blank' rel="noreferrer">
                     <img src={url} className="m-2" alt="video"/>

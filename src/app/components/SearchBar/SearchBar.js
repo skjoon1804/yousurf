@@ -1,37 +1,14 @@
 import { React } from 'react';
-import { setSearchQuery, setResults, setNextPageToken, addResults } from '../../actions'
+import { setSearchQuery, setResults, setNextPageToken } from '../../actions'
 import { connect } from 'react-redux';
 import './SearchBar.css';
 
-import { initialRequest, nextRequest } from '../../../apis/youtube';
-
-let testVar = '';
+import { initialRequest } from '../../../apis/youtube';
 
 const SearchBar = ({
-    query, results, nextPageToken, 
-    setSearchQuery, setResults, setNextPageToken, addResults
+    query, results,
+    setSearchQuery, setResults, setNextPageToken
 }) => {
-
-
-    // document.addEventListener('scroll', function (e) {
-    //     if (document.body.scrollHeight === document.body.scrollTop + window.innerHeight) {
-    //         alert("Bottom!");
-    //         // fetchNextResult();
-    //         addResults(testVar);
-    //     }
-    // })
-  
-    async function fetchNextResult(e) {
-        e.preventDefault();
-        
-        let response = await nextRequest(nextPageToken).get('/search', {
-            params: {
-                q: query
-            }
-        });
-        setNextPageToken(response.data.nextPageToken);
-        addResults(response.data.items);
-    }
 
     async function fetchResult(e) {
         e.preventDefault();
@@ -41,7 +18,6 @@ const SearchBar = ({
                     q: query
                 }
             });
-            testVar = response.data.items;
             setResults(response.data.items);
             setNextPageToken(response.data.nextPageToken);
         }
@@ -67,7 +43,6 @@ const SearchBar = ({
                     <input type="text" name="query" placeholder="Enter Keyword" 
                     className="d-block m-auto input-group-lg w-50" onChange={setSearchQuery} />
                     <button type="submit" className="btn btn-outline-dark m-2 px-5">Search</button>
-                    <button onClick={fetchNextResult}>Test</button>
                 </form>
             </div>
         }
@@ -93,9 +68,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         setNextPageToken(token) {
             dispatch(setNextPageToken(token));
-        },
-        addResults(results) {
-            dispatch(addResults(results));
         }
     }
 }
