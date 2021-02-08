@@ -1,7 +1,8 @@
-import { ConnectedSearchResults } from '../SearchResults/SearchResults';
 import { React } from 'react';
-import { ConnectedSearchBar } from '../SearchBar/SearchBar';
 import { connect } from 'react-redux';
+
+import { ConnectedSearchResults } from '../SearchResults/SearchResults';
+import { ConnectedSearchBar } from '../SearchBar/SearchBar';
 import './Layout.css'
 
 const openNav = () => {
@@ -12,7 +13,7 @@ const closeNav = () => {
     document.getElementById("sidenav").style.width = "0";
 }
 
-const Layout = ({results}) => {
+export const Layout = ({results}) => {
 
     return (
         <>
@@ -21,6 +22,7 @@ const Layout = ({results}) => {
                 <a href="#">Home</a>
                 <a href="#">Profile</a>
                 <a href="#">Favorites</a>
+                <div className="dropdown-divider"/>
                 <a href="#">Logout</a>
             </div>
 
