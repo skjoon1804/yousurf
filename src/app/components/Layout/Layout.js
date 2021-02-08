@@ -1,17 +1,13 @@
 import { React } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { ConnectedSearchResults } from '../SearchResults/SearchResults';
 import { ConnectedSearchBar } from '../SearchBar/SearchBar';
 import './Layout.css'
 
-const openNav = () => {
-    document.getElementById("sidenav").style.width = "250px";
-}
-
-const closeNav = () => {
-    document.getElementById("sidenav").style.width = "0";
-}
+const openNav = () => { document.getElementById("sidenav").style.width = "250px"; }
+const closeNav = () => { document.getElementById("sidenav").style.width = "0"; }
 
 export const Layout = ({results}) => {
 
@@ -19,9 +15,9 @@ export const Layout = ({results}) => {
         <>
             <div className="sidenav" id="sidenav">
                 <a href="#" className="closebtn" onClick={closeNav}>&times;</a>
-                <a href="#">Home</a>
-                <a href="#">Profile</a>
-                <a href="#">Favorites</a>
+                <Link to="/home">Home</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/favorite">Favorite</Link>
                 <div className="dropdown-divider"/>
                 <a href="#">Logout</a>
             </div>

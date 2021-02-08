@@ -3,7 +3,8 @@ export const results = (state = [], action) => {
         case 'SET_RESULTS':
             return action.results;
         case 'ADD_RESULTS':
-            return [...state].concat(action.results);
+            let oldResults = [...state];
+            return oldResults.concat(action.results);
         default:
             return state;
     }

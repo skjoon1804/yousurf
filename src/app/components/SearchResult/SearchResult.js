@@ -8,7 +8,7 @@ const SearchResult = ({
 }) => {
 
     return (
-        <div className="card flex-row m-4">
+        <div className="result card flex-row m-4">
             <div>
                 <a href={`http://youtube.com/watch?v=`+videoId} target='_blank' rel="noreferrer">
                     <img src={url} className="m-2" alt="video"/>
@@ -21,7 +21,7 @@ const SearchResult = ({
                 <span className="text-muted">Published on {publishedAt}</span>
                 <p className="py-3">{description}</p>
             </div>
-            <ConnectedFavoriteButton />
+            <ConnectedFavoriteButton videoId={videoId}/>
         </div>
     )
 }

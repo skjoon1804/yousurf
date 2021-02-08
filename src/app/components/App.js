@@ -23,8 +23,8 @@ const App = () => {
                 <Route exact path="/" component={props => <ConnectedLogin />} />
                 <Route exact path="/signup" component={props => <ConnectedSignup />} />
                 <Route exact path="/home" render={RouteGuard(ConnectedLayout)} />
-                <Route exact path="/profile" render={<ConnectedProfile />} />
-                <Route exact path="/favorite" render={<ConnectedFavorite />} />
+                <Route exact path="/profile" render={RouteGuard(ConnectedProfile)} />
+                <Route exact path="/favorite" render={RouteGuard(ConnectedFavorite)} />
             </Provider>
         </Router>
     );
