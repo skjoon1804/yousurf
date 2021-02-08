@@ -1,9 +1,12 @@
 import { React } from 'react';
 import { connect } from 'react-redux';
 import './SearchResult.css';
+import { ConnectedFavoriteButton } from '../ResultFavoriteButton/ResultFavoriteButton';
 
-const SearchResult = ({url, title, channelTitle, publishedAt, description, videoId }) => {
-    
+const SearchResult = ({
+    url, title, channelTitle, publishedAt, description, videoId 
+}) => {
+
     return (
         <div className="card flex-row m-4">
             <div>
@@ -18,6 +21,7 @@ const SearchResult = ({url, title, channelTitle, publishedAt, description, video
                 <span className="text-muted">Published on {publishedAt}</span>
                 <p className="py-3">{description}</p>
             </div>
+            <ConnectedFavoriteButton />
         </div>
     )
 }

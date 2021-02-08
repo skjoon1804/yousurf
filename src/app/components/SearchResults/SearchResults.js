@@ -4,7 +4,10 @@ import { ConnectedSearchResult } from '../SearchResult/SearchResult';
 import { setNextPageToken, addResults } from '../../actions'
 import { nextRequest } from '../../../apis/youtube';
 
-const SearchResults = ({query, results, nextPageToken, setNextPageToken, addResults}) => {
+const SearchResults = ({
+    query, results, nextPageToken, 
+    setNextPageToken, addResults
+}) => {
 
     async function loadResult() {
         let loadingTarget = document.getElementById("spinner-border");
