@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { ConnectedLayout } from './Layout';
+import { ConnectedLayout } from './Layout/Layout';
 import { createStore } from 'redux';
 import reducer from '../reducers';
 import { Provider } from 'react-redux';
