@@ -4,7 +4,7 @@ import './SearchResult.css';
 import { ConnectedFavoriteButton } from '../ResultFavoriteButton/ResultFavoriteButton';
 
 const SearchResult = ({
-    url, title, channelTitle, publishedAt, description, videoId 
+    url, title, channelTitle, publishedAt, description, videoId, isFavorite
 }) => {
 
     return (
@@ -21,7 +21,7 @@ const SearchResult = ({
                 <span className="text-muted">Published on {publishedAt}</span>
                 <p className="py-3">{description}</p>
             </div>
-            <ConnectedFavoriteButton videoId={videoId}/>
+            <ConnectedFavoriteButton videoId={videoId} isFavorite={isFavorite}/>
         </div>
     )
 }
@@ -41,6 +41,7 @@ const mapStateToProps = (state, ownProps) => {
         publishedAt : convertTime(ownProps.item.snippet.publishedAt),
         description : ownProps.item.snippet.description,
         videoId: ownProps.item.id.videoId,
+        isFavorite: false
     };
 }
 

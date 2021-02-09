@@ -2,17 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './ResultFavoriteButton.css'
 
-const ResultFavoriteButton = ({videoID}) => {
+const ResultFavoriteButton = ({ videoID, isFavorite }) => {
     return (
         <div className="favorite-button m-4">
-            <img width="20px" src={"http://pngimg.com/uploads/heart/heart_PNG51328.png"} onClick={() => console.log("Video Clicked: " + videoID)}/>
+            {isFavorite
+            ? <img width="20px" src={"http://pngimg.com/uploads/heart/heart_PNG51328.png"} onClick={() => console.log("Favorite Clicked: " + videoID)}/>
+            : <img width="20px" src={"http://pngimg.com/uploads/heart/heart_PNG51340.png"} onClick={() => console.log("Not Favorite Clicked: " + videoID)}/>
+            }
         </div>
     )
 }
 
 const mapStateToProps = (state, ownProps) => {
     const videoID = ownProps.videoId;
-    return {videoID};
+    const isFavorite = ownProps.isFavorite;
+    return {videoID, isFavorite};
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -20,14 +24,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export const ConnectedFavoriteButton = connect(mapStateToProps)(ResultFavoriteButton);
-
-// no fav: http://pngimg.com/uploads/heart/heart_PNG51340.png
-// fav:    http://pngimg.com/uploads/heart/heart_PNG51328.png
-
-// user
-    //id
-    // username
-    // password
-    // email
-    // dob
-    // favorite: []
