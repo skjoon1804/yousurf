@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import { setSearchQuery, setResults, setNextPageToken } from '../../actions'
 import { connect } from 'react-redux';
 import './SearchBar.css';

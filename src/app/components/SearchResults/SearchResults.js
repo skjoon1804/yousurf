@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ConnectedSearchResult } from '../SearchResult/SearchResult';
 import { setNextPageToken, addResults } from '../../actions'

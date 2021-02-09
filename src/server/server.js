@@ -1,19 +1,50 @@
 import express from 'express';
 import cors from 'cors';
-const { google } = require('googleapis');
+import bodyParser from 'body-parser';
+import { connectDB } from './connect-db';
 
+let port = 8888;
 let app = express();
 
-require('dotenv').config();
+app.listen(port, console.log("Server listening on port", port));
 
-google.youtube('v3').search.list({
-    key: process.env.YOUTUBE_TOKEN,
-    part: 'snippet',
-    q: 'korea'
-}).then((res) => {
-    console.log(res.data.items);
-}).catch((err) => console.log(err));
+app.get('/', (req, res) => {
+    res.send("HELLO WORLD");
+})
 
+app.use(
+    cors(),
+    bodyParser.urlencoded({extended: true}),
+    bodyParser.json()
+);
 
+export const addNewUser = async user => {
+    let db = await connectDB();
+    let collection = db.collection(`users`);
+    await collection.insertOne(user);
 
+};
 
+export const updateUser = async user => {
+    let { id } = user;
+    let db = await connectDB();
+    let collection = db.collection(`users`);
+
+    if (email) {
+        await collection.updateOne({id}, {$set: {email}})
+    }
+
+    // TODO add more
+}
+
+app.post('/user/new', async (req, res) => {
+    let user = req.body.user;
+    await addNewUser(user);
+    res.status(200).send();
+})
+
+app.post('/user/update', async (req, res) => {
+    let user = req.body.user;
+    await updateUser(user);
+    res.status(200).send();
+})

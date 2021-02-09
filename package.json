@@ -4,14 +4,18 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/node": "^7.12.10",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
     "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
     "googleapis": "^67.0.0",
     "http2": "^3.3.7",
+    "md5": "^2.3.0",
     "mobx": "^6.1.0",
     "mobx-react": "^7.1.0",
     "react": "^17.0.1",
@@ -21,13 +25,17 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "webpack": "^5.21.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run server",
+    "dev": "webpack-dev-server --open",
+    "test-connect": "babel-node src/server/connect-db",
+    "initialize": "babel-node src/server/initialize-db",
+    "server": "babel-node src/server/server"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +54,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/register": "^7.12.10",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "mongodb": "^3.6.4",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
