@@ -14,7 +14,7 @@ const SearchResult = ({
                     <img src={url} className="m-2" alt="video"/>
                 </a>
             </div>
-            <div className="card-block p-4">
+            <div className="card-block w-100 p-4">
                 <h4><a href={`http://youtube.com/watch?v=`+videoId} target='_blank' rel="noreferrer"
                     style={{textDecoration: 'none', color: 'black'}}>{title}</a></h4>
                 <h6>{channelTitle}</h6>

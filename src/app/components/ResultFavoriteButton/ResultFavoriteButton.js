@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './ResultFavoriteButton.css'
 
 const ResultFavoriteButton = ({videoID}) => {
-
     return (
-        <div className="m-4">
-            <img src='heart-dark.png' onClick={() => console.log("Video Clicked: " + videoID)}/>
+        <div className="favorite-button m-4">
+            <img width="20px" src={"http://pngimg.com/uploads/heart/heart_PNG51328.png"} onClick={() => console.log("Video Clicked: " + videoID)}/>
         </div>
     )
 }
@@ -21,7 +21,8 @@ const mapDispatchToProps = (dispatch) => {
 
 export const ConnectedFavoriteButton = connect(mapStateToProps)(ResultFavoriteButton);
 
-
+// no fav: http://pngimg.com/uploads/heart/heart_PNG51340.png
+// fav:    http://pngimg.com/uploads/heart/heart_PNG51328.png
 
 // user
     //id
