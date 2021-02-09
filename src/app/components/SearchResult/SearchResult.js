@@ -34,6 +34,9 @@ const mapStateToProps = (state, ownProps) => {
         return (`${month}/${day}/${year}`);
     }
 
+    let {favorite} = state.users.find(user => user.id === state.session.id);
+    let isFavorite = favorite.find(f => f.videoID === ownProps.item.id.videoId);
+
     return {
         url : ownProps.item.snippet.thumbnails.medium.url,
         title : ownProps.item.snippet.title,
@@ -41,7 +44,7 @@ const mapStateToProps = (state, ownProps) => {
         publishedAt : convertTime(ownProps.item.snippet.publishedAt),
         description : ownProps.item.snippet.description,
         videoId: ownProps.item.id.videoId,
-        isFavorite: false
+        isFavorite: isFavorite
     };
 }
 

@@ -14,16 +14,16 @@ export const users = (state = [], action) => {
                 favorite: []
             }];
         case 'REMOVE_FAVORITE':
-            return users.map(user => {
+            return state.map(user => {
                 return (user.id === action.userID) ? {
                     ...user, favorite: user.favorite.filter(
-                        fav => fav.videoID === action.videoID
+                        fav => fav.videoID !== action.videoID
                     )
                 } :
                 user
             });
         case 'ADD_FAVORITE':
-            return users.map(user => {
+            return state.map(user => {
                 return (user.id === action.userID) ? {
                     ...user, favorite: [
                         ...user.favorite,

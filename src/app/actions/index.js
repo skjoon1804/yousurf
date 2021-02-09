@@ -40,3 +40,19 @@ export const processAuthenticateUser = (status='AUTHENTICATING', session=null) =
         authenticated: status
     }
 }
+
+export const removeFavorite = (userID, videoID) => {
+    return {
+        type: 'REMOVE_FAVORITE',
+        userID,
+        videoID
+    }
+}
+
+export const addFavorite = (userID, videoID) => {
+    return {
+        type: 'ADD_FAVORITE',
+        userID,
+        videoID
+    }
+}

@@ -15,7 +15,6 @@ export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
 
         try {
             const { data } = await axios.post(url + `/authenticate`, {username, password});
-            console.log(data);
             setState({...data.state});
             processAuthenticateUser(`AUTHENTICATED`);
             history.push('/home');
