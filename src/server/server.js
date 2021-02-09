@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import md5 from 'md5';
+import uuid from 'react-uuid';
 import { connectDB } from './connect-db';
 
 let port = process.env.PORT || 8888;
@@ -19,6 +21,45 @@ if (process.env.NODE_ENV == `production`) {
         res.sendFile(path.resolve('index.html'));
     });
 }
+
+
+async function assembleUserState(user) {
+    let db = await connectDB();
+    let users = await db.collection(`users`).find().toArray();
+    return {
+        users,
+        session: {authentocated: `AUTHENTICATED`, id: user.id}
+    }
+}
+
+const authenticationTokens = [];
+const authenticateRoute = app => {
+    app.post('/authenticate', async (req, res) => {
+        let {username, password} = req.body;
+        let db = await connectDB();
+        let collection = db.collection(`users`);
+
+        let user = await collection.findOne({username: username});
+        if (!user) { return res.status(500).send("User not found"); }
+
+        let hash = md5(password);
+        let passwordCorrect = hash === user.passwordHash;
+        if (!passwordCorrect) { return res.status(500).send("Password Incorrect"); }
+
+        let token = uuid();
+        authenticationTokens.push({
+            token,
+            userID: user.id
+        })
+        let state = await assembleUserState(user);
+
+        console.log(state);
+        res.send({token, state});
+    })
+}
+authenticateRoute(app);
+
+
 
 export const addNewUser = async user => {
     let db = await connectDB();

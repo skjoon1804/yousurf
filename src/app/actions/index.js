@@ -25,3 +25,18 @@ export const addResults = (results) => {
         results
     }
 }
+
+export const setState = (state = {}) => {
+    return {
+        type: 'SET_STATE',
+        state
+    }
+}
+
+export const processAuthenticateUser = (status='AUTHENTICATING', session=null) => {
+    return {
+        type: 'PROCESS_AUTHENTICATE_USER',
+        session,
+        authenticated: status
+    }
+}
