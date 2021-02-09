@@ -9,11 +9,12 @@ import './Layout.css'
 const openNav = () => { document.getElementById("sidenav").style.width = "250px"; }
 const closeNav = () => { document.getElementById("sidenav").style.width = "0"; }
 
-export const Layout = ({results}) => {
+export const Layout = ({ results, name }) => {
 
     return (
         <>
             <div className="sidenav" id="sidenav">
+                <h5 className="m-3">Welcome, {name}</h5>
                 <a href="#" className="closebtn" onClick={closeNav}>&times;</a>
                 <Link to="/home">Home</Link>
                 <Link to="/profile">Profile</Link>
@@ -33,8 +34,10 @@ export const Layout = ({results}) => {
 }
 
 const mapStateToProps = (state) => {
+    const { name } = state.users.find(user => user.id === state.session.id);
     return {
-        results: state.results
+        results: state.results,
+        name
     }
 }
 

@@ -1,10 +1,13 @@
 export const users = (state = [], action) => {
     switch (action.type) {
+        case 'SET_STATE':
+            return action.state.users;
         case 'CREATE_USER':
             return [...state, {
                 id: action.userID,
                 username: action.username,
                 passwordHash: action.passwordHash,
+                name: action.name,
                 email: action.email,
                 dob: action.dob,
                 maxResults: 5,

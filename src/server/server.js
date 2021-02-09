@@ -28,7 +28,7 @@ async function assembleUserState(user) {
     let users = await db.collection(`users`).find().toArray();
     return {
         users,
-        session: {authentocated: `AUTHENTICATED`, id: user.id}
+        session: {authenticated: `AUTHENTICATED`, id: user.id}
     }
 }
 
