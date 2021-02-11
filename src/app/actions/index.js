@@ -56,3 +56,41 @@ export const addFavorite = (userID, videoID) => {
         videoID
     }
 }
+
+export const setName = (userID, name) => {
+    return {
+        type: 'SET_NAME',
+        userID,
+        name
+    }
+}
+
+export const setEmail = (userID, email) => {
+    return {
+        type: 'SET_EMAIL',
+        userID,
+        email
+    }
+}
+
+export const setDob = (userID, dob) => {
+    return {
+        type: 'SET_DOB',
+        userID,
+        dob
+    }
+}
+
+export const createUser = (
+    id, username, passwordHash, name, email, dob
+) => {
+    return {
+        type: 'CREATE_USER',
+        id,
+        username,
+        passwordHash,
+        name,
+        email,
+        dob
+    }
+}

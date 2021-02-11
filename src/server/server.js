@@ -53,7 +53,6 @@ const authenticateRoute = app => {
         })
         let state = await assembleUserState(user);
 
-        console.log(state);
         res.send({token, state});
     })
 }
@@ -65,17 +64,23 @@ export const addNewUser = async user => {
     let db = await connectDB();
     let collection = db.collection(`users`);
     await collection.insertOne(user);
-
 };
 
 export const updateUser = async user => {
-    let { id } = user;
+    let { id, name, email, dob } = user;
     let db = await connectDB();
     let collection = db.collection(`users`);
 
-    if (email) {
-        await collection.updateOne({id}, {$set: {email}})
+    if (name) {
+        await collection.updateOne({id}, {$set: {name}});
     }
+    if (email) {
+        await collection.updateOne({id}, {$set: {email}});
+    }
+    if (dob) {
+        await collection.updateOne({id}, {$set: {dob}});
+    }
+}
 
     // TODO add more
 }
