@@ -82,17 +82,52 @@ export const updateUser = async user => {
     }
 }
 
-    // TODO add more
+export const addFavorite = async favorite => {
+    let { userID, videoID } = favorite;
+    let db = await connectDB();
+    let collection = db.collection(`users`);
+    let check = await collection.findOne({id: userID});
+    if (check) {
+        await collection.update({id: userID}, {$push: {favorite: {videoID}}});
+    } else {
+        res.status(500).send("Error");
+    }
+}
+
+export const deleteFavorite = async favorite => {
+    let { userID, videoID } = favorite;
+    let db = await connectDB();
+    let collection = db.collection(`users`);
+    await collection.update({id: userID}, {$pull: {favorite: {videoID}}});
 }
 
 app.post('/user/new', async (req, res) => {
     let user = req.body.user;
-    await addNewUser(user);
-    res.status(200).send();
+    let db = await connectDB();
+    let collection = db.collection(`users`);
+    let check = await collection.findOne({username: user.username});
+    if (check) {
+        res.status(500).send("User already exists!");
+    } else {
+        await addNewUser(user);
+        res.status(200).send();
+    }
 })
 
 app.post('/user/update', async (req, res) => {
     let user = req.body.user;
     await updateUser(user);
+    res.status(200).send();
+})
+
+app.post('/favorite', async (req, res) => {
+    let favorite = req.body.favorite;
+    await addFavorite(favorite);
+    res.status(200).send();
+})
+
+app.delete('/favorite', async (req, res) => {
+    let favorite = req.body;
+    await deleteFavorite(favorite);
     res.status(200).send();
 })
