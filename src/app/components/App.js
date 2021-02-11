@@ -3,7 +3,8 @@ import { Route, Router } from 'react-router-dom';
 import { createStore } from 'redux';
 import reducer from '../reducers';
 import { Provider } from 'react-redux';
-import { history } from '../reducers/history'
+import { history } from '../reducers/history';
+import { Redirect } from 'react-router';
 
 import { ConnectedLayout } from './Layout/Layout';
 import { ConnectedLogin } from './Login/Login';
@@ -14,6 +15,8 @@ import { ConnectedFavorite } from './Favorite/Favorite';
 let store = createStore(reducer);
 
 const RouteGuard = Component => ({match}) =>
+    !store.getState().session.authenticated ?
+    <Redirect to="/" /> :
     <Component match={match} />
 
 const App = () => {
