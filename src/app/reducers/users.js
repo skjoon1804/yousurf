@@ -32,6 +32,27 @@ export const users = (state = [], action) => {
                 } :
                 user
             });
+        case 'SET_NAME':
+            return state.map(user => {
+                return (user.id === action.userID) ? {
+                    ...user, name: action.name
+                } :
+                user
+            });
+        case 'SET_EMAIL':
+            return state.map(user => {
+                return (user.id === action.userID) ? {
+                    ...user, email: action.email
+                } :
+                user
+            });
+        case 'SET_DOB':
+            return state.map(user => {
+                return (user.id === action.userID) ? {
+                    ...user, dob: action.dob
+                } :
+                user
+            });
         default:
             return state;
     }
