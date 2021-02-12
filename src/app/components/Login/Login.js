@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {history} from '../../reducers/history';
 import { setState, processAuthenticateUser } from '../../actions';
+import './Login.css'
 
 export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
+
     const url = process.env.NODE_ENV == `production` ? `` : "http://localhost:8888";
 
     async function authenticateUser(e) {
@@ -19,12 +21,16 @@ export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
             processAuthenticateUser(`AUTHENTICATED`);
             history.push('/home');
         } catch (e) {
-            console.log(e);
             processAuthenticateUser(`NOT_AUTHENTICATED`);
         }
     }
 
     return (
+        <>
+        <video autoPlay muted loop id="homeVideo">
+            <source src="https://cdn-cf-east.streamable.com/video/mp4/rytl8j.mp4?Expires=1613344980&Signature=OqkMCYuU1PDD89xeVYnSHoXM63bmZnDtYzt8ighMvRMVx-XrR0m~PcdNii-PiCP~~j6XF06bu4AJZgvjvusUyvuYB0YUz25Wf2ucHNJR872HVR2JHBkGijSoJtExqriFl11AHH9eXkqoUtDjnN~uorc2GY5ufV-jDkIiwIE68mPnKnugvCqcoU~FScWpGpDvJrqV8wwaO-aRoSlzhFeZqhTwEo2zhBkw7XP55o~2d7vIL0XGqUrtDQbG-4kd49R64p9RRwB8FGgV1griYzFod4gafJ~yMk7kAMRKgVJD8-MnuiJZFGmP15Jwk0pvFK53~Th2cHgAUBrHo1WazwFrpQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ" 
+            type="video/mp4"/>
+        </video>
         <div className="container col-md-3 p-0 d-flex flex-column h-100 justify-content-center">
             <div className="card">
                 <form className="p-4" onSubmit={authenticateUser}>
@@ -41,10 +47,11 @@ export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
                 </form>
                 {authenticated === `NOT_AUTHENTICATED` ? <p className="text-center text-danger">LOGIN INCORRECT</p> : null}
                 <div className="card-footer">
-                    <p>New to YouSurf?  <Link to="/signup">Sign up</Link></p>
+                    <p>New to YouSurf?  <Link to="/signup">Register</Link></p>
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { ConnectedSearchResults } from '../SearchResults/SearchResults';
 import { ConnectedSearchBar } from '../SearchBar/SearchBar';
@@ -16,7 +15,6 @@ export const Layout = ({ results }) => {
             {results.length === 0 ? null :
             <ConnectedSearchResults  />
             }
-
         </>
     );
 }
