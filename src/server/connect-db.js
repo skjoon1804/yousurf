@@ -1,5 +1,7 @@
 import { MongoClient } from 'mongodb';
-const url = `mongodb://localhost:27017/yousurfdb`;
+let url = (process.env.NODE_ENV === `production`) 
+            ? ``
+            : `mongodb://localhost:27017/yousurfdb`;   
 
 let db = null;
 export async function connectDB() { 

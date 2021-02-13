@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import md5 from 'md5';
 import uuid from 'react-uuid';
 import { connectDB } from './connect-db';
+import path from 'path';
 
 let port = process.env.PORT || 8888;
 let app = express();
@@ -88,7 +89,7 @@ export const addFavorite = async favorite => {
     let collection = db.collection(`users`);
     let check = await collection.findOne({id: userID});
     if (check) {
-        await collection.update({id: userID}, {$push: {favorite: {videoID}}});
+        await collection.updateOne({id: userID}, {$push: {favorite: {videoID, imageUrl, title, description}}});
     } else {
         res.status(500).send("Error");
     }
@@ -98,7 +99,7 @@ export const deleteFavorite = async favorite => {
     let { userID, videoID } = favorite;
     let db = await connectDB();
     let collection = db.collection(`users`);
-    await collection.update({id: userID}, {$pull: {favorite: {videoID}}});
+    await collection.updateOne({id: userID}, {$pull: {favorite: {videoID}}});
 }
 
 app.post('/user/new', async (req, res) => {

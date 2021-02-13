@@ -6,8 +6,8 @@ import { users } from './users';
 import { session } from './session';
 
 const reducer = combineReducers({
-    query,
     login,
+    query,
     results,
     nextPageToken,
     users,

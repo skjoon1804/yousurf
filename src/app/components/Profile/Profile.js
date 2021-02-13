@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { history } from '../../reducers/history'
 import axios from 'axios';
 
-import { ConnectedSidebar} from '../Sidebar/Sidebar';
+import { ConnectedSidebar } from '../Sidebar/Sidebar';
 import { setName, setEmail, setDob } from '../../actions'
 
 export const Profile = ({
@@ -13,8 +13,6 @@ export const Profile = ({
 }) => {
     const nameRef = useRef(), emailRef = useRef(), dobRef = useRef();
     const url = process.env.NODE_ENV == `production` ? `` : "http://localhost:8888";
-
-
     const submitForm = async (e) => {
         e.preventDefault();
         const currentName = nameRef.current.value;

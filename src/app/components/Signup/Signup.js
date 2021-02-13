@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createUser } from '../../actions';
 import uuid from 'react-uuid';
 import md5 from 'md5';
 import axios from 'axios';
 import { history } from '../../reducers/history'
+import { createUser } from '../../actions';
 
 export const Signup = ({createUser}) => {
 

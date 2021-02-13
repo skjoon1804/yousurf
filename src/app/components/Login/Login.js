@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -9,7 +9,6 @@ import './Login.css'
 export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
 
     const url = process.env.NODE_ENV == `production` ? `` : "http://localhost:8888";
-
     async function authenticateUser(e) {
         e.preventDefault();
         let username = e.target[`username`].value;
@@ -32,7 +31,7 @@ export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
             type="video/mp4"/>
         </video>
         <div className="container col-md-3 p-0 d-flex flex-column h-100 justify-content-center">
-            <div className="card">
+            <div className="card border border-dark">
                 <form className="p-4" onSubmit={authenticateUser}>
                     <h2 className="text-center">Login</h2>
                     <div className="form-group">

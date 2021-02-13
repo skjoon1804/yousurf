@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { ConnectedSearchResults } from '../SearchResults/SearchResults';
 import { ConnectedSearchBar } from '../SearchBar/SearchBar';
 import { ConnectedSidebar} from '../Sidebar/Sidebar';
-
 
 export const Layout = ({ results }) => {
 
@@ -24,5 +22,4 @@ const mapStateToProps = (state) => {
         results: state.results
     }
 }
-
 export const ConnectedLayout =  connect(mapStateToProps)(Layout);

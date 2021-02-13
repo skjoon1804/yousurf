@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
 import { removeFavorite } from '../../actions'
 import { ConnectedSidebar } from '../Sidebar/Sidebar';
 import './Favorite.css';
@@ -23,7 +22,6 @@ export const Favorite = ({
             })
         } catch (e) { console.log("Could not remove from Favorite" + e); }
     }
-
 
     return (
         <>
@@ -53,7 +51,6 @@ export const Favorite = ({
                         </div> :
                         <h4 className="text-center container p-5">&#x1f30a; Go and have fun surfing &#x1f30a;</h4>
                     }
-
                 </div>
             </div>
         </>
@@ -63,7 +60,6 @@ export const Favorite = ({
 const mapStateToProps = (state) => {
     let {favorite} = state.users.find(user => user.id === state.session.id);
     const userID = state.session.id;
-
     return {favorites: favorite, userID};
 }
 
@@ -74,5 +70,4 @@ const mapDispatchToProps = (dispatch) => {
         }
     };
 }
-
 export const ConnectedFavorite = connect(mapStateToProps, mapDispatchToProps)(Favorite);
