@@ -84,7 +84,7 @@ export const updateUser = async user => {
 }
 
 export const addFavorite = async favorite => {
-    let { userID, videoID } = favorite;
+    let { userID, videoID, imageUrl, title, description } = favorite;
     let db = await connectDB();
     let collection = db.collection(`users`);
     let check = await collection.findOne({id: userID});

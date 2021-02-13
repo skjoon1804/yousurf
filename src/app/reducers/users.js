@@ -27,7 +27,12 @@ export const users = (state = [], action) => {
                 return (user.id === action.userID) ? {
                     ...user, favorite: [
                         ...user.favorite,
-                        {videoID: action.videoID}
+                        {
+                            videoID: action.videoID,
+                            imageUrl: action.imageUrl,
+                            title: action.title,
+                            description: action.description
+                        }
                     ]
                 } :
                 user
