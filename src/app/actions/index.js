@@ -49,11 +49,14 @@ export const removeFavorite = (userID, videoID) => {
     }
 }
 
-export const addFavorite = (userID, videoID) => {
+export const addFavorite = (userID, videoID, imageUrl, title, description) => {
     return {
         type: 'ADD_FAVORITE',
         userID,
-        videoID
+        videoID,
+        imageUrl,
+        title,
+        description
     }
 }
 

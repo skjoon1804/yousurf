@@ -39,15 +39,14 @@ const SearchResults = ({
     return (
         <>
             <div className="px-5 py-3" id="results">
+                <p className="my-4 mx-2">Search result for: <b>{query}</b></p>
                 {results.map((item, index) => 
                     <ConnectedSearchResult key={index} item={item}/>
                 )}
             </div>
             <div id="spinner-border" style={{display: 'block'}} className="spinner-border mx-auto p-4"></div>
             <div className="p-5 m-2" id="spinner-buffer"></div>
-            
         </>
- 
     )
 }
 

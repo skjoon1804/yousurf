@@ -21,7 +21,8 @@ const SearchResult = ({
                 <span className="text-muted">Published on {publishedAt}</span>
                 <p className="py-3">{description}</p>
             </div>
-            <ConnectedFavoriteButton videoId={videoId} isFavorite={isFavorite}/>
+            <ConnectedFavoriteButton videoId={videoId} url={url} title={title}
+                    description={description} isFavorite={isFavorite}/>
         </div>
     )
 }
@@ -33,7 +34,6 @@ const mapStateToProps = (state, ownProps) => {
         let year = new Date(timestamp).getFullYear();
         return (`${month}/${day}/${year}`);
     }
-
     let {favorite} = state.users.find(user => user.id === state.session.id);
     let isFavorite = favorite.find(f => f.videoID === ownProps.item.id.videoId);
 

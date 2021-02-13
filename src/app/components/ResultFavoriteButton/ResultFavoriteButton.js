@@ -5,12 +5,11 @@ import './ResultFavoriteButton.css'
 import axios from 'axios';
 
 const ResultFavoriteButton = ({ 
-    userID, videoID, isFavorite, 
+    userID, videoID, isFavorite, imageUrl, title, description,
     removeFavorite, addFavorite 
 }) => {
 
     const url = process.env.NODE_ENV == `production` ? `` : "http://localhost:8888";
-
     const removeFavoriteClick = async e => {
         try {
             await axios.delete(url + `/favorite`, {
@@ -27,7 +26,10 @@ const ResultFavoriteButton = ({
             await axios.post(url + `/favorite`, {
                 favorite: {
                     userID,
-                    videoID
+                    videoID,
+                    imageUrl,
+                    title,
+                    description
                 }
             })
         } catch (e) { console.log("Could not add to Favorite"); }
@@ -48,18 +50,24 @@ const mapStateToProps = (state, ownProps) => {
     const isFavorite = ownProps.isFavorite;
     const userID = state.session.id;
     const videoID = ownProps.videoId;
-    return {userID, videoID, isFavorite};
+    const imageUrl = ownProps.url;
+    const title = ownProps.title;
+    const description = ownProps.description;
+    return {userID, videoID, isFavorite, imageUrl, title, description};
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const videoID = ownProps.videoId;
+    const imageUrl = ownProps.url;
+    const title = ownProps.title;
+    const description = ownProps.description;
 
     return {
         removeFavorite(userID) {
             dispatch(removeFavorite(userID, videoID))
         },
         addFavorite(userID) {
-            dispatch(addFavorite(userID, videoID))
+            dispatch(addFavorite(userID, videoID, imageUrl, title, description))
         }
     }
 }
