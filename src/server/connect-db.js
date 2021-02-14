@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 let url = (process.env.NODE_ENV === `production`) 
-            ? ``
+            ? `mongodb+srv://admin:admin@cluster0.mylms.mongodb.net/yousurfdb?retryWrites=true&w=majority`
             : `mongodb://localhost:27017/yousurfdb`;   
 
 let db = null;
