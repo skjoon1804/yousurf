@@ -2,27 +2,41 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 999;
   top: 0;
   right: 0;
   background-color: #dddddd;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .sidenav a {
-  z-index: 1;
-  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
   color: #818181;
+  margin: auto;
+  font-size: 25px;
+  padding: 8px 8px 8px 32px;
   display: block;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+.menu-item::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.5s;
+}
+
+.menu-item:hover {
+  color: black;
+}
+
+.menu-item:hover::after {
+  width: 70%;
 }
 
 .sidenav .closebtn {
