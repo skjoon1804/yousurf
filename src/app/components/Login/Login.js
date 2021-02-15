@@ -27,7 +27,7 @@ export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
     return (
         <>
         <video autoPlay muted loop id="homeVideo">
-            <source src="https://cdn-cf-east.streamable.com/video/mp4/rytl8j.mp4?Expires=1613344980&Signature=OqkMCYuU1PDD89xeVYnSHoXM63bmZnDtYzt8ighMvRMVx-XrR0m~PcdNii-PiCP~~j6XF06bu4AJZgvjvusUyvuYB0YUz25Wf2ucHNJR872HVR2JHBkGijSoJtExqriFl11AHH9eXkqoUtDjnN~uorc2GY5ufV-jDkIiwIE68mPnKnugvCqcoU~FScWpGpDvJrqV8wwaO-aRoSlzhFeZqhTwEo2zhBkw7XP55o~2d7vIL0XGqUrtDQbG-4kd49R64p9RRwB8FGgV1griYzFod4gafJ~yMk7kAMRKgVJD8-MnuiJZFGmP15Jwk0pvFK53~Th2cHgAUBrHo1WazwFrpQ__&Key-Pair-Id=APKAIEYUVEN4EVB2OKEQ" 
+            <source src="https://dc700.4shared.com/img/Vpacfkm8ea/e073f0c2/dlink__2Fdownload_2FVpacfkm8ea_3Fsbsr_3Dbeb98400fed2961be8a1da2992844179a6b_26bip_3DNzYuMTcxLjI0Ni4xMjE_26lgfp_3D66_26dsid_3Dzjc9pUxo.3980a88a1492ccb56932bd77fa648044_26bip_3DNzYuMTcxLjI0Ni4xMjE_26bip_3DNzYuMTcxLjI0Ni4xMjE/preview.mp4?cuid=1450830102&cupa=5f082b6e5f691b62028fd56d2680b0df"
             type="video/mp4"/>
         </video>
         <div className="container col-md-3 p-0 d-flex flex-column h-100 justify-content-center">
