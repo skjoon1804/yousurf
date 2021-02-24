@@ -17,11 +17,14 @@ YouSurf is a personal project by Anderson Kwon.
 - Add/Remove youtube videos to favorites in database
 - Quick access to users' favorites via Favorite menu
 
+![features](https://media.giphy.com/media/bsoEoLiSTm5Ych8CSc/giphy.gif)
+
+
 ## Product Design
 
 YouSurf was designed and built in three weeks.
 - [Sample State](https://github.com/skjoon1804/yousurf/blob/main/src/server/defaultState.js)
-- [Database Schema]()
+- [Database Schema](https://github.com/skjoon1804/yousurf/blob/main/schema.md)
 
 ## Technology
 - Backend Technology
