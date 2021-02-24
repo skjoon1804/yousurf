@@ -27,7 +27,7 @@ export const Login = ({ authenticated, setState, processAuthenticateUser }) => {
     return (
         <>
         <video autoPlay muted loop id="homeVideo">
-            <source src="https://dc700.4shared.com/download/Vpacfkm8ea/yousurf_home.mp4?tsid=20210215-184334-802f0132&sbsr=322a935a60b5dcb1b62e267978d1d198a6b&bip=NzIuMjExLjIxNC4xNTg&lgfp=30"
+            <source src="https://res.cloudinary.com/andersonkwon/video/upload/v1614154974/yousurf_home_uuhmlp.mp4"
             type="video/mp4"/>
         </video>
         <div className="container col-md-3 p-0 d-flex flex-column h-100 justify-content-center">
