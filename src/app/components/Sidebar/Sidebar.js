@@ -19,7 +19,7 @@ export const Sidebar = ({name, logout}) => {
                 <Link className="menu-item" to="/profile">Profile</Link>
                 <Link className="menu-item" to="/favorite">Favorite</Link>
                 <div className="dropdown-divider"/>
-                <a href="" onClick={logout} className="menu-item">Logout</a>
+                <a href="" onClick={() => logout()} className="menu-item">Logout</a>
             </div>
             <span className="m-4" style={{fontSize: '30px', cursor: 'pointer', float: 'right'}} onClick={openNav}>&#9776;</span>
         </>
