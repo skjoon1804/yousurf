@@ -19,27 +19,30 @@ YouSurf is a personal project by Anderson Kwon.
 
 ## Product Design
 
-- YouSurf was designed and built in three weeks.
+YouSurf was designed and built in three weeks.
+- [Sample State](https://github.com/skjoon1804/yousurf/blob/main/src/server/defaultState.js)
+- [Database Schema]()
 
 ## Technology
-- Backend
-```javascript
-    users: [{
-        id: "U1",
-        username: "admin",
-        passwordHash: md5("123"),
-        name: "admin",
-        email: "admin@admin.com",
-        dob: "01/01/1900",
-        favorite: [{
-            videoID: "9bZkp7q19f0",
-            title: "",
-            description: ""
-        }]
-    }]
-```
+- Backend Technology
+  - Node.js
+    - md5 for password hashing
+    - uuid
+    - axios
+  - Database
+    - MongoDB
 
-- Frontend
+- Frontend Technology
   - React.js & Redux
+    - To keep component renders organized and reusable - actions, reducers, store 
+    - axios: To make HTTP request to the server
   - Bootstrap
   - CSS
+    - For styles
+  - Others
+    - ReactDOM, React Router, React History, Link, Babel
+
+- File Storage
+  - Cloudinary
+
+
