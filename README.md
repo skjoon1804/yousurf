@@ -1,9 +1,5 @@
 # YouSurf
 
-<<<<<<< Updated upstream
-
-![home](https://media.giphy.com/media/cnlyjAMB1RzZAiNC8Y/giphy.gif)
-=======
 [YouSurf](https://yousurf.herokuapp.com/) is a Youtube video data querying web application using NodeJS on the backend, React/Redux on the frontend, and MongoDB for the database.
 
 YouSurf is a personal project by Anderson Kwon.
@@ -26,4 +22,24 @@ YouSurf is a personal project by Anderson Kwon.
 - YouSurf was designed and built in three weeks.
 
 ## Technology
->>>>>>> Stashed changes
+- Backend
+```javascript
+    users: [{
+        id: "U1",
+        username: "admin",
+        passwordHash: md5("123"),
+        name: "admin",
+        email: "admin@admin.com",
+        dob: "01/01/1900",
+        favorite: [{
+            videoID: "9bZkp7q19f0",
+            title: "",
+            description: ""
+        }]
+    }]
+```
+
+- Frontend
+  - React.js & Redux
+  - Bootstrap
+  - CSS
